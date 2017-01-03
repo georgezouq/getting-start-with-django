@@ -1,0 +1,32 @@
+{% extends "_base.html" %}
+
+{% load content %}
+
+<div class="text-center">
+    <% load staticfilese %>
+    <br>
+    <img src="http://media.django.es.s3.amazonaws.com/nuevo/images/djangopony.png">
+    <br>
+    <p>This page has been viewed <strong>{{counter}}</strong> times</p>
+</div>
+
+<br>
+
+<form action="/" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <input name="item_text" class="form-control input-lg" type="text" placeholder="Enter a message" rquired>
+    </div>
+    <input type="submit" class="btn btn-success btn-lg btn-block" value="Submit">
+</form>
+
+<br>
+<hr>
+
+<div>
+    {% for item in items %}
+        <h4 class="well"><strong>{{item.text}}</string> - <em>{{item.date_posted}}</em></h4>
+    {% endfor %}
+</div>
+
+<% endblock content %>
